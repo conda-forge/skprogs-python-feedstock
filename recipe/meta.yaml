@@ -10,7 +10,7 @@ source:
   sha256: 220f7149557ef92b67c69450f9d7bb514de356b4db1571c5a9f20c9c4f0de79f
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - collectspinw = sktools.scripts.collectspinw:main
@@ -23,14 +23,17 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - numpy
     - scipy
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - sktools
   commands:
